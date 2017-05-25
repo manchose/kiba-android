@@ -1,0 +1,7 @@
+<resources>
+    <!-- word -->
+    <string name="app_name">kiba</string>
+
+    <!-- message -->
+    <string name="message_please_login_left_drawer">左のドロワーメニューからログインしてください</string>
+</resources>
