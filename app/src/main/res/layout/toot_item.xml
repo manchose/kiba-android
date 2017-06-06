@@ -12,16 +12,76 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#e3e3e3"
+        android:background="#202e44"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@{viewModel.toot.body}"
-            android:textColor="@android:color/black"
-            tools:text="sample toot" />
+            android:background="#202e44"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="10dp"
+                android:textColor="@android:color/white"
+                tools:text="icon area" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@{viewmodel.toot.name}"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/white"
+                    tools:text="manchose\@がんばらない" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@{viewmodel.toot.body}"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/white"
+                    tools:text="\@sample_account sample very very very very very very very very very very long toot" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Reply"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Boost"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Favorite"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Menu"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </layout>
