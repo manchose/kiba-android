@@ -40,7 +40,7 @@ class TimelineFragment : BaseFragment() {
         var i = 0
         val list: MutableList<Toot> = mutableListOf()
         while (i < 20) {
-            list.add(Toot(i, "テストの文言 $i"))
+            list.add(Toot(i, "テストの文言 $i", "name_$i"))
             i++
         }
         tootItemsViewModel.setToots(list)
