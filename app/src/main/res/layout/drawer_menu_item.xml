@@ -14,13 +14,14 @@
         android:gravity="center"
         android:onClick="@{viewModel.menuClick}"
         android:orientation="vertical"
-        android:paddingLeft="16dp">
+        android:paddingLeft="16dp"
+        android:tag="@{viewModel.drawerMenu.id}">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left|center_vertical"
-            android:text="@{viewModel.title}"
+            android:text="@{viewModel.drawerMenu.title}"
             android:textColor="@color/white"
             android:textSize="13sp" />
 

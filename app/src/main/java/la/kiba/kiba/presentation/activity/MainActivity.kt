@@ -2,6 +2,8 @@ package la.kiba.kiba.presentation.activity
 
 import android.app.Fragment
 import android.app.FragmentManager
+import android.content.Context
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v13.app.FragmentStatePagerAdapter
@@ -20,6 +22,12 @@ class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     @Inject lateinit var mainActivityViewModel: MainActivityViewModel
     @Inject lateinit var menuListViewModel: MenuListViewModel
+
+    companion object {
+        fun createIntent(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +51,7 @@ class MainActivity : BaseActivity() {
 
     // TODO: sasaki タブの数が1以下だったらGONEする処理に変更する(isLoginがfalseの場合はタブ数が0と考える)
     private fun initTab() {
-        if (mainActivityViewModel.isLogin()) {
+        if (!mainActivityViewModel.isLogin()) {
             binding.tabs.setupWithViewPager(binding.pager)
         } else {
             binding.tabs.visibility = View.GONE
@@ -56,7 +64,7 @@ class MainActivity : BaseActivity() {
 
     inner class TimelineFragmentStatePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         override fun getItem(position: Int): Fragment {
-            if (mainActivityViewModel.isLogin()) {
+            if (!mainActivityViewModel.isLogin()) {
                 return when (position) {
                     0 -> TimelineFragment.newInstance()
                     1 -> TimelineFragment.newInstance()
@@ -74,7 +82,7 @@ class MainActivity : BaseActivity() {
             if (mainActivityViewModel.isLogin()) {
                 return 4
             } else {
-                return 1
+                return 4
             }
         }
     }

@@ -12,33 +12,37 @@ import com.squareup.moshi.Json
 @Table
 class OAuthToken {
     @Column
-    @PrimaryKey(auto = false)
+    @PrimaryKey(auto = true)
     val id: Long
 
     @Column
-    @Json(name = "client_id")
-    val clientId: String
+    @Json(name = "access_token")
+    val accessToken: String
 
     @Column
-    @Json(name = "client_secret")
-    val clientSecret: String
+    @Json(name = "scope")
+    val scope: String
+
+    @Column(indexed = true)
+    var email: String
 
     @Column
-    @Json(name = "redirect_uri")
-    val redirectUri: String
+    var password: String
 
-    @Column(indexed = true, unique = true)
-    val instance: String
+    @Column(indexed = true)
+    var instance: String
 
     constructor(@Setter id: Long,
-                @Setter clientId: String,
-                @Setter clientSecret: String,
-                @Setter redirectUri: String,
+                @Setter accessToken: String,
+                @Setter scope: String,
+                @Setter email: String,
+                @Setter password: String,
                 @Setter instance: String) {
         this.id = id
-        this.clientId = clientId
-        this.clientSecret = clientSecret
-        this.redirectUri = redirectUri
+        this.accessToken = accessToken
+        this.scope = scope
+        this.email = email
+        this.password = password
         this.instance = instance
     }
 }

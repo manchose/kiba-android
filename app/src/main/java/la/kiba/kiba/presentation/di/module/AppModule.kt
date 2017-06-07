@@ -8,11 +8,13 @@ import dagger.Module
 import dagger.Provides
 import la.kiba.kiba.infla.entity.OrmaDatabase
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+
 
 /**
  * Created by sasaki_nobuya on 2017/04/23.
@@ -33,7 +35,13 @@ class AppModule(val application: Application) {
     fun provideOkHttpClient(): OkHttpClient {
         // FIXME: sasaki インターセプターなど設定すること(blogにまとめる)
         val builder = OkHttpClient.Builder()
-        return builder.connectTimeout(30L, TimeUnit.SECONDS).build()
+        //ログ出力設定
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+        builder.addInterceptor(logging)
+        // タイムアウト設定
+        builder.connectTimeout(30L, TimeUnit.SECONDS)
+        return builder.build()
     }
 
     /** baseUrlは利用側で動的に設定する */

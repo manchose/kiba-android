@@ -60,7 +60,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-moshi:2.2.0'
     compile 'com.squareup.moshi:moshi:1.4.0'
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
-    //compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
 
     // Orma
     kapt 'com.github.gfx.android.orma:orma-processor:4.2.4'
